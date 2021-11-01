@@ -18,14 +18,17 @@ public class Main {
             System.exit(1);
         }
 
+        System.out.println("Available moves: ");
         for (int i = 0; i < unique.size(); i++) {
             System.out.println(i + 1 + " - " + unique.get(i));
         }
         System.out.println("? " + "- help");
+        System.out.println("0 " + "- exit");
         game.startGame(c, unique);
-        String anotherGame = scanner.next();
         while (true) {
-            if (anotherGame.equals("yes")) {
+            System.out.println("Wanna play one more time ?" + " yes/no");
+            String anotherGame = scanner.next();
+            if (anotherGame.toLowerCase(Locale.ROOT).equals("yes")) {
                 game.startGame(c, unique);
             } else {
                 System.exit(1);

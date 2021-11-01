@@ -14,7 +14,7 @@ public class Rules {
             result = "Tie";
             return result;
         } else if (sentences == 0) {
-            result = "Won";
+            result = "Win";
             return result;
 
         } else {
