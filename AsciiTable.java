@@ -17,7 +17,7 @@ public class AsciiTable {
         for (int i = 0; i < c; i++) {
             for (int j = 0, ind = 1; j < c; j++, ind++) {
 
-                data[i][ind] = checkCondition(i + 1, j + 1, c);
+                data[i][ind] = checkCondition(i , j, args);
             }
         }
         System.out.println(com.github.freva.asciitable.AsciiTable.getTable(moves, data));

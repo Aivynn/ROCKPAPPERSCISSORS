@@ -1,26 +1,40 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rules {
+    public static String checkCondition(int humanMove, int computerMove, List<String> list) {
 
-    public static String checkCondition(int a, int b, int c) {
+        String result = "tie";
+        int moves = list.size() / 2;
+        List<String> win = new ArrayList<>();
+        int i = 0;
+        int a = humanMove - moves;
 
-        String result = "";
-        int distance = b - a;
-        if (distance < 0) {
-            distance += c;
+        while(i<moves) {
+
+            if(a < 0) {
+                win.add(list.get(list.size() + a));
+            }
+            else {
+                win.add(list.get(a));
+            }
+            a++;
+            i++;
         }
-        int sentences = distance % 2;
-        if (b == a) {
-            result = "Tie";
-            return result;
-        } else if (sentences == 0) {
-            result = "Win";
-            return result;
 
-        } else {
-            result = "Lose";
+
+        if(humanMove == computerMove) {
+            return result;
+        }
+        else if(win.contains(list.get(computerMove))) {
+            result = "lose";
+            return result;
+        }
+        else {
+            result = "win";
             return result;
         }
     }
-
 }

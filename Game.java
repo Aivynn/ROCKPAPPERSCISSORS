@@ -15,6 +15,11 @@ public class Game {
 
     public void startGame(int c, List<String> args) throws NoSuchAlgorithmException, InvalidKeyException {
 
+        int computerMove = random.nextInt(c);
+        String computer = args.get(computerMove);
+        String secretKey = key.generateSecretKey();
+        String hmac = key.generateHMAC(secretKey, computer);
+        System.out.println("hmac - " + hmac);
         System.out.println("Enter your move: ");
         String userMove = scanner.next();
         if( userMove.equals("0")) {
@@ -24,14 +29,10 @@ public class Game {
             table.createAsciiTable(c, args);
             System.exit(1);
         } else {
-            Integer user = Integer.valueOf(userMove);
-            int computerMove = random.nextInt(c);
-            String computer = args.get(computerMove);
-            String secretKey = key.generateSecretKey();
-            String hmac = key.generateHMAC(secretKey, computer);
-            System.out.println("Secret key - " + secretKey + "\n" + "hmac - " + hmac);
-            System.out.println(args.get(user - 1) + " " + args.get(computerMove));
-            System.out.println("Human - " + Rules.checkCondition(user - 1, computerMove, c));
+            int user = Integer.parseInt(userMove);
+            System.out.println("Secret key - " + secretKey);
+            System.out.println("Human move - " + args.get(user) + " Computer move - " + args.get(computerMove));
+            System.out.println("Human - " + Rules.checkCondition(user, computerMove, args));
 
         }
     }

@@ -19,8 +19,7 @@ public class GenerateKey {
         keyGen.init(secure);
         byte[] bytes = new byte[128 / 8];
         secure.nextBytes(bytes);
-        String originalKey = Base64.getEncoder().encodeToString(bytes);
-        return originalKey;
+        return Base64.getEncoder().encodeToString(bytes);
     }
 
     public String generateHMAC(String key, String computer) throws InvalidKeyException, NoSuchAlgorithmException {
